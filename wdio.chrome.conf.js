@@ -5,7 +5,7 @@ exports.config = {
     capabilities: [{
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['--headed']
+            args: ['--headless']
         }
     }]
 };

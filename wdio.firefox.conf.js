@@ -3,6 +3,6 @@ exports.config = {
   ...base.config,
   capabilities: [{
     browserName: 'firefox',
-    'moz:firefoxOptions': { args: ['-headed'] }
+    'moz:firefoxOptions': { args: ['--headless'] }
   }]
 };
