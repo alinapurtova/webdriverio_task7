@@ -13,7 +13,8 @@
     "test:navigation": "npx wdio run wdio.conf.js --spec navigation.e2e.js",
     "test:searches": "npx wdio run wdio.conf.js --spec searches.e2e.js",
     "test:signup": "npx wdio run wdio.conf.js --spec signup.e2e.js",
-    "test:chrome:homepage": "cross-env BROWSER=chrome npx wdio run wdio.chrome.conf.js --spec signup.e2e.js",
+    "test:cookies": "npx wdio run wdio.conf.js --spec cookies.e2e.js",
+    "test:chrome:homepage": "cross-env BROWSER=chrome npx wdio run wdio.chrome.conf.js --spec homepage.e2e.js",
     "allure:generate": "npx allure generate allure-results --clean -o allure-report",
     "allure:open": "npx allure open allure-report",
     "wdio:docker": "cross-env npx wdio run wdio.docker.conf.js"
