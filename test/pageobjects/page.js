@@ -13,7 +13,6 @@ export default class Page {
     async click(selector) {
         const element = await $(selector);
         await element.waitForDisplayed({ timeout: 10000 });
-        // await expect(element).toBeClickable();
         await element.click();
     }
 

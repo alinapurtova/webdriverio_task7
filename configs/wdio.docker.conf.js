@@ -19,6 +19,6 @@ export const config = {
     ],
     reporters: [
         ['spec', { showPreface: false }],
-        ['allure', { outputDir: 'allure-results', disableWebdriverStepsReporting: true }],
+        ['allure', { outputDir: '../allure-results', disableWebdriverStepsReporting: true }],
     ],
 };

@@ -91,7 +91,7 @@ npm run allure:open
 | Test ID    | Description                                                                                     |
 | ---------- | ------------------------------------------------------------------------------------------------|
 | **TC-001** | Verify user can navigate to the Pricing page from the header                                    |
-| **TC-002** | Verify the Contact Us form is visible and functional                                            |
+| **TC-002** | Verify "Contact Us" link navigation and form presence                                           |
 | **TC-003** | Verify that the Login form is displayed in new tab                                              |
 | **TC-004** | Verify the social media links in the footer                                                     |
 
@@ -118,9 +118,9 @@ npm run allure:open
 ### HomePage features tests
 | Test ID    | Description                                                                                     |
 | ---------- | ------------------------------------------------------------------------------------------------|
-| **TC-013** | Verify that the chat/contact widget appears and functions correctly                             |
+| **TC-013** | Verify that the chat/contact widget appears and closes correctly                                |
 | **TC-014** | Verify "Call your agent" button scrolls to the interactive tool demo section                    |
-| **TC-015** | Verify that the “Text to Speech” tab works correctly                                            |
+| **TC-015** | Verify the "Text To Speech" functionality                                                      |
 | **TC-016** | Verify that the “Text to Speech” audio can be played                                            |
 
 ### Liveperson Customer Story video
@@ -131,8 +131,8 @@ npm run allure:open
 ### Global Coverage page
 | Test ID    | Description                                                                                     |
 | ---------- | ------------------------------------------------------------------------------------------------|
-| **TC-018** | Filtering Global Coverage table by country                                                      |
-| **TC-019** | Validation of reset button after filter Global Coverage table                                   |
+| **TC-018** | Verify filtering Global Coverage table by country                                               |
+| **TC-019** | Verify validation of reset button after filter Global Coverage table                            |
 | **TC-020** | Submit "Download full coverage" form with valid data on the Global Coverage page                |
 | **TC-021** | Submit "Download full coverage" form with invalid email on the Global Coverage page             |
 

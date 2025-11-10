@@ -20,7 +20,7 @@ describe('GlobalCoverage page tests', () => {
         await GlobalCoveragePage.isOnPage();
     });
 
-    it('TC-018: Filtering Global Coverage table by country', async () => {
+    it('TC-018: Verify filtering Global Coverage table by country', async () => {
         const filterCountry = "Albania";
 
         await expect($(GlobalCoveragePage.coverageTable)).toBeDisplayed();
@@ -29,7 +29,7 @@ describe('GlobalCoverage page tests', () => {
         await GlobalCoveragePage.verifyTableContainsOnlyCountry(filterCountry);
     });
 
-    it('TC-019: Validation of reset button after filter Global Coverage table', async () => {
+    it('TC-019: Verify validation of reset button after filter Global Coverage table', async () => {
         const filterCountry = "Angola";
 
         await expect($(GlobalCoveragePage.coverageTable)).toBeDisplayed();

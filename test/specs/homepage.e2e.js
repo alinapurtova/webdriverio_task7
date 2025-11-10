@@ -7,7 +7,7 @@ describe('HomePage features tests', () => {
         await HomePage.open();
     });
 
-    it('TC-013: Verify that the chat/contact widget appears and functions correctly', async () => {
+    it('TC-013: Verify that the chat/contact widget appears and closes correctly', async () => {
         await ChatPage.openChatWidget();
         await ChatPage.verifyChatOpened();
         await ChatPage.closeChatWidget();
@@ -19,12 +19,12 @@ describe('HomePage features tests', () => {
         await expect($(HomePage.interactiveToolDemoSection)).toBeDisplayed();
     });
 
-    it('TC-015:  Verify that the “Text to Speech” tab works correctly', async () => {
+    it('TC-015: Verify the "Text To Speech" functionality', async () => {
         await HomePage.verifyTextToSpeechTabWorks();
         await expect($(HomePage.textToSpeechContent)).toBeDisplayed();
     });
 
-    it('TC-016:  Verify that the “Text to Speech” audio can be played', async () => {
+    it('TC-016: Verify that the “Text to Speech” audio can be played', async () => {
         const randomText = faker.lorem.sentence();
 
         await HomePage.verifyTextToSpeechTabWorks();

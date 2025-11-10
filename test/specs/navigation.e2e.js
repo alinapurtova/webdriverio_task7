@@ -14,7 +14,7 @@ describe('Navigation tests', () => {
         await expect(await $(PricingPage.header)).toBeExisting();
     });
 
-    it('TC-002: Verify the Contact Us form is visible and functional', async () => {
+    it('TC-002: Verify "Contact Us" link navigation and form presence', async () => {
         await HomePage.navigateToContactUs();
         await ContactUsPage.isOnPage();
         await expect(await $(ContactUsPage.form)).toBeExisting();

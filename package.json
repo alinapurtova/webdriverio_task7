@@ -3,21 +3,21 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "npx wdio run wdio.conf.js",
-    "test:chrome": "cross-env BROWSER=chrome npx wdio run wdio.chrome.conf.js",
-    "test:firefox": "cross-env BROWSER=firefox npx wdio run wdio.firefox.conf.js",
-    "test:edge": "cross-env BROWSER=edge npx wdio run wdio.edge.conf.js",
-    "test:globalCoverage": "npx wdio run wdio.conf.js --spec globalCoverage.e2e.js",
-    "test:homepage": "npx wdio run wdio.conf.js --spec homepage.e2e.js",
-    "test:liveperson": "npx wdio run wdio.conf.js --spec liveperson.e2e.js",
-    "test:navigation": "npx wdio run wdio.conf.js --spec navigation.e2e.js",
-    "test:searches": "npx wdio run wdio.conf.js --spec searches.e2e.js",
-    "test:signup": "npx wdio run wdio.conf.js --spec signup.e2e.js",
-    "test:cookies": "npx wdio run wdio.conf.js --spec cookies.e2e.js",
-    "test:chrome:homepage": "cross-env BROWSER=chrome npx wdio run wdio.chrome.conf.js --spec homepage.e2e.js",
+    "test": "npx wdio run configs/wdio.conf.js",
+    "test:chrome": "cross-env BROWSER=chrome npx wdio run configs/wdio.chrome.conf.js",
+    "test:firefox": "cross-env BROWSER=firefox npx wdio run configs/wdio.firefox.conf.js",
+    "test:edge": "cross-env BROWSER=edge npx wdio run configs/wdio.edge.conf.js",
+    "test:globalCoverage": "npx wdio run configs/wdio.conf.js --spec globalCoverage.e2e.js",
+    "test:homepage": "npx wdio run configs/wdio.conf.js --spec homepage.e2e.js",
+    "test:liveperson": "npx wdio run configs/wdio.conf.js --spec liveperson.e2e.js",
+    "test:navigation": "npx wdio run configs/wdio.conf.js --spec navigation.e2e.js",
+    "test:searches": "npx wdio run configs/wdio.conf.js --spec searches.e2e.js",
+    "test:signup": "npx wdio run configs/wdio.conf.js --spec signup.e2e.js",
+    "test:cookies": "npx wdio run configs/wdio.conf.js --spec cookies.e2e.js",
+    "test:chrome:homepage": "cross-env BROWSER=chrome npx wdio run configs/wdio.chrome.conf.js --spec homepage.e2e.js",
     "allure:generate": "npx allure generate allure-results --clean -o allure-report",
     "allure:open": "npx allure open allure-report",
-    "wdio:docker": "cross-env npx wdio run wdio.docker.conf.js"
+    "wdio:docker": "cross-env npx wdio run configs/wdio.docker.conf.js"
   },
   "keywords": [],
   "author": "",
@@ -35,6 +35,7 @@
     "allure-commandline": "^2.34.1",
     "chromedriver": "^141.0.6",
     "cross-env": "^10.1.0",
+    "dotenv": "^17.2.3",
     "webdriver-manager": "^12.1.9"
   }
 }
