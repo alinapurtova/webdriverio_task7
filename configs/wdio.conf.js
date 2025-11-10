@@ -1,3 +1,12 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
+const env = process.env.ENV || 'dev';
+
+const baseUrls = {
+  dev: 'https://telnyx.com'
+};
+
 exports.config = {
     before: async function () {
         await browser.setWindowSize(1400, 900);
@@ -18,7 +27,7 @@ exports.config = {
     }],
     logLevel: 'info',
     bail: 0,
-    baseUrl: 'https://telnyx.com',
+    baseUrl: baseUrls[env],
     waitforTimeout: 20000,
     connectionRetryTimeout: 180000,
     connectionRetryCount: 3,

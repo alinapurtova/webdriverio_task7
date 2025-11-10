@@ -4,9 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "npx wdio run configs/wdio.conf.js",
-    "test:chrome": "cross-env BROWSER=chrome npx wdio run configs/wdio.chrome.conf.js",
-    "test:firefox": "cross-env BROWSER=firefox npx wdio run configs/wdio.firefox.conf.js",
-    "test:edge": "cross-env BROWSER=edge npx wdio run configs/wdio.edge.conf.js",
+    "test:chrome": "cross-env ENV=dev BROWSER=chrome npx wdio run configs/wdio.chrome.conf.js",
+    "test:firefox": "cross-env ENV=dev BROWSER=firefox npx wdio run configs/wdio.firefox.conf.js",
+    "test:edge": "cross-env ENV=dev BROWSER=edge npx wdio run configs/wdio.edge.conf.js",
     "test:globalCoverage": "npx wdio run configs/wdio.conf.js --spec globalCoverage.e2e.js",
     "test:homepage": "npx wdio run configs/wdio.conf.js --spec homepage.e2e.js",
     "test:liveperson": "npx wdio run configs/wdio.conf.js --spec liveperson.e2e.js",
@@ -17,7 +17,7 @@
     "test:chrome:homepage": "cross-env BROWSER=chrome npx wdio run configs/wdio.chrome.conf.js --spec homepage.e2e.js",
     "allure:generate": "npx allure generate allure-results --clean -o allure-report",
     "allure:open": "npx allure open allure-report",
-    "wdio:docker": "cross-env npx wdio run configs/wdio.docker.conf.js"
+    "wdio:docker": "cross-env ENV=dev npx wdio run configs/wdio.docker.conf.js"
   },
   "keywords": [],
   "author": "",
