@@ -1,0 +1,5 @@
+{
+  "error": "no such element",
+  "message": "no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"input[name=\"promo_code\"]\"}\n  (Session info: chrome=142.0.7444.59)",
+  "stacktrace": "#0 0x556f761deaea <unknown>\n#1 0x556f75c2acdb <unknown>\n#2 0x556f75c7d6c4 <unknown>\n#3 0x556f75c7d901 <unknown>\n#4 0x556f75ccc8b4 <unknown>\n#5 0x556f75cc9c87 <unknown>\n#6 0x556f75c6faca <unknown>\n#7 0x556f75c707d1 <unknown>\n#8 0x556f761a5ab9 <unknown>\n#9 0x556f761a8a8c <unknown>\n#10 0x556f7618ed49 <unknown>\n#11 0x556f761a9685 <unknown>\n#12 0x556f761766c3 <unknown>\n#13 0x556f761cb7d8 <unknown>\n#14 0x556f761cb9b3 <unknown>\n#15 0x556f761dda83 <unknown>\n#16 0x7f592e09caa4 <unknown>\n#17 0x7f592e129c6c <unknown>\n"
+}
