@@ -2,7 +2,8 @@ import Page from './page.js';
 import { expect, browser } from '@wdio/globals';
 
 class HomePage extends Page {
-    pricingLink = 'a[href="/pricing"] button';
+    pricingLink = '#main-menu-content button:nth-child(3)';
+    pricingButton = 'a[class*="button"][href="/pricing"]'
     contactUsLink = 'header a[href*="/contact-us"]:nth-child(1)';
     signUpButton = 'header a[href="/sign-up"]';
     loginButton = 'header a[href*="/portal"]:nth-child(2)';
@@ -28,6 +29,7 @@ class HomePage extends Page {
 
     async navigateToPricing() {
         await this.click(this.pricingLink);
+        await this.click(this.pricingButton);
     }
 
     async navigateToSignUp() {
@@ -68,7 +70,7 @@ class HomePage extends Page {
         await this.isVisible(this.cookieBanner);
         await this.click(this.cookieSettingsButton);
 
-        const switches = await $$(this.cookieSettingsSwitches);
+        const switches = await this.getElements(this.cookieSettingsSwitches);
         await expect(switches).toBeElementsArrayOfSize(3);
 
         for (const sw of switches) {
@@ -91,17 +93,15 @@ class HomePage extends Page {
     }
 
     async verifyTextToSpeechTabWorks() {
-        const section = await $(this.aiFeaturesSection);
-        await section.scrollIntoView();
+        await this.scrollIntoView(this.aiFeaturesSection)
         await this.isVisible(this.aiFeaturesSection);
         await this.click(this.textToSpeechTab);
         await this.isVisible(this.textToSpeechContent);
     }
 
     async enterTextForSpeech(text) {
-        const textarea = await $(this.textToSpeechTextarea);
-        await textarea.waitForDisplayed({ timeout: 10000 });
-        await textarea.setValue(text);
+        await this.waitForDisplayed(this.textToSpeechTextarea);
+        await this.setValue(this.textToSpeechTextarea, text);
         const enteredText = await textarea.getValue();
         await expect(enteredText.trim()).toEqual(text.trim());
     }

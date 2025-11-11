@@ -58,7 +58,7 @@ class SignUpPage extends Page {
     }
 
     async verifyPromoFieldNotVisible() {
-        await this.isHidden(this.promoLink);
+        await this.isHidden(this.promoInput);
     }
 
     async clickPromoLink() {
