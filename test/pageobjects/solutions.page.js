@@ -17,13 +17,30 @@ class SolutionsPage extends Page {
         await browser.keys('Enter');
 
         await browser.waitUntil(
-            async () => (await this.getElements(this.solutionTitles)).length > 0,
+            async () => {
+                const results = await this.getElements(this.solutionTitles);
+                return results.length > 0;
+            },
             {
                 timeout: 10000,
                 timeoutMsg: `No solutions found for keyword: ${keyword}`
             }
         );
+
+        await browser.waitUntil(
+            async () => {
+                const results = await this.getElements(this.solutionTitles);
+                if (results.length === 0) return false;
+                const firstText = await results[0].getText();
+                return firstText.toLowerCase().includes(keyword.toLowerCase());
+            },
+            {
+                timeout: 10000,
+                timeoutMsg: `First result is not updated with keyword: ${keyword}`
+            }
+        );
     }
+
 
     async verifyResultsContainKeyword(keyword) {
         const results = await this.getElements(this.solutionTitles);

@@ -27,9 +27,6 @@ class RcsPage extends Page {
         await expect(questions.length).toBeGreaterThan(0);
 
         const firstQuestion = questions[0];
-        await firstQuestion.waitForClickable({ timeout: 5000 });
-        await firstQuestion.click();
-
         await browser.waitUntil(
             async () => (await firstQuestion.getAttribute('aria-expanded')) === 'true',
             {
@@ -37,6 +34,8 @@ class RcsPage extends Page {
                 timeoutMsg: 'First question did not open within 5s'
             }
         );
+        await firstQuestion.waitForClickable({ timeout: 5000 });
+        await firstQuestion.click();
     }
 
 
