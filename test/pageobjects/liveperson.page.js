@@ -1,5 +1,5 @@
 import Page from './page.js';
-import { $, browser } from '@wdio/globals';
+import { browser } from '@wdio/globals';
 
 class LivepersonPage extends Page {
     url = '/customer-stories/liveperson';
@@ -20,19 +20,10 @@ class LivepersonPage extends Page {
     }
 
     async playVideo() {
-        const iframe = $(this.vimeoIframe);
-        await browser.pause(5000); 
-        await iframe.waitForExist({ timeout: 10000 });
-        await iframe.scrollIntoView();
-        await browser.switchFrame(iframe);
-
-        const playButton = $(this.playButton);
-        await playButton.scrollIntoView();
-        if (await playButton.isExisting()) {
-            await playButton.waitForClickable({ timeout: 5000 });
-            await playButton.click();
+        await this.switchFrame(this.vimeoIframe);
+        if (await this.isExisting(this.playButton)) {
+            await this.click(this.playButton);
         }
-        await browser.pause(3000); 
         await browser.switchToParentFrame();
     }
 }

@@ -1,5 +1,5 @@
 import Page from './page.js';
-import { $, $$, expect, browser } from '@wdio/globals';
+import { expect, browser } from '@wdio/globals';
 
 class SolutionsPage extends Page {
     url = '/solutions';
@@ -12,14 +12,12 @@ class SolutionsPage extends Page {
     }
 
     async searchForKeyword(keyword) {
-        const searchInput = await $(this.searchInput);
-        await searchInput.waitForDisplayed({ timeout: 10000 });
-        await searchInput.scrollIntoView();
-        await searchInput.setValue(keyword);
+        await this.scrollIntoView(this.searchInput);
+        await this.setValue(this.searchInput, keyword);
         await browser.keys('Enter');
 
         await browser.waitUntil(
-            async () => (await $$(this.solutionTitles)).length > 0,
+            async () => (await this.getElements(this.solutionTitles)).length > 0,
             {
                 timeout: 10000,
                 timeoutMsg: `No solutions found for keyword: ${keyword}`
@@ -28,7 +26,7 @@ class SolutionsPage extends Page {
     }
 
     async verifyResultsContainKeyword(keyword) {
-        const results = await $$(this.solutionTitles);
+        const results = await this.getElements(this.solutionTitles);
         await expect(results.length).toBeGreaterThan(0);
 
         for (const result of results) {

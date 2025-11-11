@@ -1,5 +1,5 @@
 import Page from './page.js';
-import { $, expect, browser } from '@wdio/globals';
+import { expect, browser } from '@wdio/globals';
 
 class ResourcesPage extends Page {
     url = '/resources';
@@ -11,9 +11,8 @@ class ResourcesPage extends Page {
     }
 
     async searchForKeyword(keyword) {
-        const input = await $(this.searchInput);
-        await input.waitForDisplayed({ timeout: 10000 });
-        await input.setValue(keyword);
+        await this.waitForDisplayed(this.searchInput, 10000);
+        await this.setValue(this.searchInput, keyword);
         await browser.keys('Enter');
     }
 

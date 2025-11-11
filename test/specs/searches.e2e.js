@@ -11,10 +11,7 @@ describe('Searches and FAQ features tests', () => {
         await expect(await browser.getUrl()).toContain(SolutionsPage.url);
         for (const keyword of keywords) {
             await SolutionsPage.searchForKeyword(keyword);
-            await browser.pause(2000);
             await SolutionsPage.verifyResultsContainKeyword(keyword);
-
-            await browser.pause(2000);
         }
     });
 
@@ -24,7 +21,6 @@ describe('Searches and FAQ features tests', () => {
         await ResourcesPage.openPage();
         await expect(await browser.getUrl()).toContain(ResourcesPage.url);
         await ResourcesPage.searchForKeyword(keyword);
-        await browser.pause(2000);
         await ResourcesPage.verifySearchResults(keyword);
     });
 

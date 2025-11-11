@@ -12,6 +12,11 @@ const invalidEmails = [
     'testuserluxequality',
     'testuserluxequality@@gmail.com'
 ];
+const filterCountry1 = "Albania";
+const filterCountry2 = "Angola";
+const firstName = faker.person.firstName();
+const lastName = faker.person.lastName();
+const email = faker.internet.email();
 
 describe('GlobalCoverage page tests', () => {
 
@@ -21,28 +26,21 @@ describe('GlobalCoverage page tests', () => {
     });
 
     it('TC-018: Verify filtering Global Coverage table by country', async () => {
-        const filterCountry = "Albania";
-
         await expect($(GlobalCoveragePage.coverageTable)).toBeDisplayed();
         await expect($(GlobalCoveragePage.servicesButton)).toBeDisplayed();
-        await GlobalCoveragePage.selectCountry(filterCountry);
-        await GlobalCoveragePage.verifyTableContainsOnlyCountry(filterCountry);
+        await GlobalCoveragePage.selectCountry(filterCountry1);
+        await GlobalCoveragePage.verifyTableContainsOnlyCountry(filterCountry1);
     });
 
     it('TC-019: Verify validation of reset button after filter Global Coverage table', async () => {
-        const filterCountry = "Angola";
-
         await expect($(GlobalCoveragePage.coverageTable)).toBeDisplayed();
-        await GlobalCoveragePage.selectCountry(filterCountry);
-        await GlobalCoveragePage.verifyTableContainsOnlyCountry(filterCountry);
+        await GlobalCoveragePage.selectCountry(filterCountry2);
+        await GlobalCoveragePage.verifyTableContainsOnlyCountry(filterCountry2);
         await GlobalCoveragePage.resetFilterAndVerify();
     });
 
     invalidEmails.forEach((email) => {
         it(`TC-021: Submit "Download full coverage" form with invalid email`, async () => {
-            const firstName = faker.person.firstName();
-            const lastName = faker.person.lastName();
-
             await GlobalCoveragePage.fillFirstName(firstName);
             await GlobalCoveragePage.fillLastName(lastName);
             await GlobalCoveragePage.fillEmail(email);
@@ -53,10 +51,6 @@ describe('GlobalCoverage page tests', () => {
     });
 
     it('TC-020: Submit "Download full coverage" form with valid data', async () => {
-        const firstName = faker.person.firstName();
-        const lastName = faker.person.lastName();
-        const email = faker.internet.email();
-
         await expect($(GlobalCoveragePage.form)).toBeDisplayed();
         await GlobalCoveragePage.fillFirstName(firstName);
         await GlobalCoveragePage.fillLastName(lastName);

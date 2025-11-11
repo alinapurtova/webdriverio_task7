@@ -1,5 +1,5 @@
 import Page from './page.js';
-import { $, $$, expect } from '@wdio/globals';
+import { expect } from '@wdio/globals';
 
 class SignUpPage extends Page {
     url = '/sign-up';
@@ -42,7 +42,7 @@ class SignUpPage extends Page {
     }
 
     async verifyErrorMessages() {
-        const messages = await $$(this.errors);
+        const messages = await this.getElements(this.errors);
         for (const element of messages) {
             await element.waitForDisplayed();
             await expect(element).toBeDisplayed();
@@ -50,34 +50,24 @@ class SignUpPage extends Page {
     }
 
     async verifyFormIsVisible() {
-        const form = await $(this.signUpForm);
-        await form.waitForDisplayed({ timeout: 10000 });
-        await expect(form).toBeDisplayed();
+        await this.isVisible(this.signUpForm);
     }
 
     async verifyPromoLinkVisible() {
-        const promoLink = await $(this.promoLink);
-        await promoLink.waitForDisplayed({ timeout: 10000 });
-        await expect(promoLink).toBeDisplayed();
+        await this.isVisible(this.promoLink);
     }
 
     async verifyPromoFieldNotVisible() {
-        const promoField = await $(this.promoInput);
-        const isDisplayed = await promoField.isDisplayed();
-        await expect(isDisplayed).toBe(false);
+        await this.isHidden(this.promoLink);
     }
 
     async clickPromoLink() {
-        const promoLink = await $(this.promoLink);
-        await promoLink.scrollIntoView();
-        await promoLink.click();
+        await this.scrollIntoView(this.promoLink);
+        await this.click(this.promoLink);
     }
 
     async verifyPromoFieldAppears() {
-        const promoInput = await $(this.promoInput);
-        await promoInput.waitForDisplayed({ timeout: 5000 });
-        await expect(promoInput).toBeDisplayed();
-        await expect(promoInput).toBeEnabled();
+        await this.isVisible(this.promoInput);
     }
 }
 

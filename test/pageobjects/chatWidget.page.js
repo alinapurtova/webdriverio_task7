@@ -1,5 +1,4 @@
 import Page from './page.js';
-import { $ } from '@wdio/globals';
 
 class ChatPage extends Page {
     chatButton = 'button.relative.rounded-full';
@@ -9,7 +8,7 @@ class ChatPage extends Page {
 
     async openChatWidget() {
         await this.isVisible(this.chatButton);
-        await $(this.chatButton).scrollIntoView();
+        await this.scrollIntoView(this.chatButton);
         await this.click(this.chatButton);
     }
 

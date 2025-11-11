@@ -1,5 +1,5 @@
 import Page from './page.js';
-import { $, $$, expect, browser } from '@wdio/globals';
+import { expect, browser } from '@wdio/globals';
 
 class RcsPage extends Page {
     url = '/products/rcs';
@@ -17,40 +17,54 @@ class RcsPage extends Page {
     }
 
     async verifyFaqSectionVisible() {
-        const faqBlock = $(this.faqSection);
-        await faqBlock.waitForDisplayed({ timeout: 10000 });
-        await faqBlock.scrollIntoView();
-        await expect(faqBlock).toBeDisplayed();
+        await this.waitForDisplayed(this.faqSection, 10000);
+        await this.scrollIntoView(this.faqSection);
+        await this.isVisible(this.faqSection);
     }
 
     async verifyFirstQuestionOpened() {
-        const questions = await $$(this.faqQuestions);
+        const questions = await this.getElements(this.faqQuestions);
         await expect(questions.length).toBeGreaterThan(0);
 
         const firstQuestion = questions[0];
-        const isOpened = await firstQuestion.getAttribute('aria-expanded');
-        await expect(isOpened).toBe('true');
         await firstQuestion.waitForClickable({ timeout: 5000 });
-        await browser.pause(500);
         await firstQuestion.click();
+
+        await browser.waitUntil(
+            async () => (await firstQuestion.getAttribute('aria-expanded')) === 'true',
+            {
+                timeout: 5000,
+                timeoutMsg: 'First question did not open within 5s'
+            }
+        );
     }
 
+
     async verifyFaqToggle() {
-        const questions = $$(this.faqQuestions);
+        const questions = await this.getElements(this.faqQuestions);
+
         for (let i = 1; i < questions.length; i++) {
             const question = questions[i];
             await question.scrollIntoView({ block: 'center' });
-            await browser.pause(500);
             await question.waitForClickable({ timeout: 5000 });
             await question.click();
 
-            await browser.pause(1000);
-            const isOpened = await question.getAttribute('aria-expanded');
-            await expect(isOpened).toBe('true');
+            await browser.waitUntil(
+                async () => (await question.getAttribute('aria-expanded')) === 'true',
+                {
+                    timeout: 5000,
+                    timeoutMsg: `Question ${i + 1} did not open in time`
+                }
+            );
 
             const prev = questions[i - 1];
-            const wasPrevOpened = await prev.getAttribute('aria-expanded');
-            await expect(wasPrevOpened).toBe('false');
+            await browser.waitUntil(
+                async () => (await prev.getAttribute('aria-expanded')) === 'false',
+                {
+                    timeout: 5000,
+                    timeoutMsg: `Previous question ${i} did not close in time`
+                }
+            );
         }
     }
 }
